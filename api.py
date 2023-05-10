@@ -43,5 +43,32 @@ def load_page(route, plugin_dir='.'):
     @pages.route("/moxin_api/new_user", methods=['GET', 'POST'])
     def new_user():
         user = db.session.query(Users).order_by(desc(Users.id)).first()
-        return str(user)
+        if user.affiliation is not None:
+            return str(user.name, "  ", user.affiliation)
+        else:
+            return str(user.name)
+
+    # @pages.route("/moxin_api/Record_Users", methods=['GET', 'POST'])
+    # def Record_Users():
+    #     user = db.session.query(Users).order_by(desc(Users.id)).first()
+    #     if user.affiliation is not None:
+    #         return str(user.name, "  ", user.affiliation)
+    #     else:
+    #         return str(user.name)
+
+    # @pages.route("/moxin_api/add_user", methods=['GET', 'POST'])
+    # def add_user():
+    #     name = request.form.get('name')
+    #     password = request.form.get('password')
+    #     email = request.form.get('email')
+    #     type = request.form.get('email')
+    #     affiliation = request.form.get('email')
+    #
+    # @pages.route("/moxin_api/add_user_new", methods=['GET', 'POST'])
+    # def add_user_new():
+    #     name = request.form.get('name')
+    #     password = request.form.get('password')
+    #     email = request.form.get('email')
+    #     phone = request.form.get('phone')
+    #     type = request.form.get('email')
     return pages

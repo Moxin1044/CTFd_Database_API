@@ -1,4 +1,4 @@
 {
-    "name": "CTFd Database API",
-    "route": "/admin/database_API"
+    "name": "CTFd 数据API",
+    "route": "/admin/databaseapi"
 }

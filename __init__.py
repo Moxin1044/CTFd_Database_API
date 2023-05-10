@@ -4,7 +4,7 @@ import os
 from flask import current_app as app, render_template, request, Blueprint
 from CTFd.plugins import register_plugin_assets_directory
 
-from .Database_API import load_page
+from .api import load_page
 
 PLUGIN_PATH = os.path.dirname(__file__)
 with open(f"{PLUGIN_PATH}/config.json", 'r') as fd:
@@ -16,4 +16,4 @@ def load(app):
     register_plugin_assets_directory(app, base_path=f"{PLUGIN_PATH}/assets")
     pages = load_page(CONFIG["route"], PLUGIN_PATH)
     app.register_blueprint(pages)
-    print("CTFd CTFd_Database_API plugin is ready!")
+    print("CTFd Database plugin is ready!")

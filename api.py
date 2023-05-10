@@ -10,13 +10,13 @@ from CTFd.utils import get_config
 
 from sqlalchemy import desc
 
-pages = Blueprint("CTFd DAtabase API", __name__, template_folder="templates")
+pages = Blueprint("CTFd Database API", __name__, template_folder="templates")
 
 
 def load_page(route, plugin_dir='.'):
     @pages.route(route, methods=['GET', 'POST'])
     @admins_only
-    def view_home():
+    def view_db_home():
         return render_template("api_config_home.html")
 
     @pages.route("/moxin_api/user_number", methods=['GET', 'POST'])
@@ -30,7 +30,7 @@ def load_page(route, plugin_dir='.'):
         return str(Tracking.query.with_entities(Tracking.ip).distinct().count())
 
     @pages.route("/moxin_api/challenge_number", methods=['GET', 'POST'])
-    def ipnum():
+    def challengenum():
         # 返回题目数量
         return str(Challenges.query.count())
 
@@ -44,3 +44,4 @@ def load_page(route, plugin_dir='.'):
     def new_user():
         user = db.session.query(Users).order_by(desc(Users.id)).first()
         return str(user)
+    return pages

@@ -1,0 +1,4 @@
+{
+    "name": "CTFd Database API",
+    "route": "/admin/database_API"
+}
